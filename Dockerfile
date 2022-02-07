@@ -21,7 +21,7 @@ COPY --from=tools /usr/share /usr/share
 WORKDIR /opt/airflow
 
 RUN ["/bin/bash", "-c", "mkdir data && cd data && while read i; do git clone $i; done < <(curl -s https://api.github.com/orgs/datasets/repos?per_page=100 | jq -r '.[].clone_url')"] 
-CMD ["/bin/python"]
+CMD ["/bin/python2.7"]
 COPY . /opt/airflow
 RUN pip install -r requirements.txt
 
