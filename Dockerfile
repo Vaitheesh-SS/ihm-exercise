@@ -23,6 +23,5 @@ RUN ["/bin/bash", "-c", "mkdir data && cd data && while read i; do git clone $i;
 CMD ["/bin/python"]
 COPY . /opt/airflow
 RUN pip install -r requirements.txt
-# RUN export JAVA_HOME="$(dirname $(dirname $(readlink -f $(which java))))"
 
-# ENTRYPOINT ["bash"]
+ENTRYPOINT ["bash"]
