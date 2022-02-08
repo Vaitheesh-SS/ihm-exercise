@@ -25,4 +25,4 @@ COPY . /ihm
 RUN pip install -r requirements.txt
 CMD ["/usr/bin/python3.9", "main.py"]
 
-#ENTRYPOINT ["bash"]
+ENTRYPOINT ["bash"]
