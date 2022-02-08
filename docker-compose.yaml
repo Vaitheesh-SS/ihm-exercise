@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command:
-      #- python main.py
-      - bash
+      - /usr/bin/python3.7 main.py
+      #- bash
     ports:
       - 8001:5000 
     volumes:
