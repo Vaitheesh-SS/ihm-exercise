@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     command:
-      - /usr/bin/python3.9 main.py
+      - "/usr/bin/python3.9 main.py"
     ports:
       - 8001:5000 
     volumes:
