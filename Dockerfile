@@ -3,8 +3,9 @@ FROM debian:buster AS tools
 RUN apt-get update && apt-get install -y \
 	git \
 	curl \
-	jq \
-	python	
+	jq
+
+From python:latest
 
 # RUN apt-get update && \
 #     apt-get install -y curl \
@@ -21,7 +22,7 @@ COPY --from=tools /usr/share /usr/share
 WORKDIR /opt/airflow
 
 RUN ["/bin/bash", "-c", "mkdir data && cd data && while read i; do git clone $i; done < <(curl -s https://api.github.com/orgs/datasets/repos?per_page=100 | jq -r '.[].clone_url')"] 
-RUN ["/bin/bash", "-c", "sudo ln -s /usr/bin/python2.7 /usr/bin/python"
+#RUN ["/bin/bash", "-c", "sudo ln -s /usr/bin/python2.7 /usr/bin/python"
 CMD ["/bin/python"]
 COPY . /opt/airflow
 RUN pip install -r requirements.txt
