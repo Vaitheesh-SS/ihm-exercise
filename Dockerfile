@@ -20,7 +20,7 @@ FROM python:latest
 WORKDIR /ihm
 
 RUN ["/bin/bash", "-c", "mkdir data && cd data && while read i; do git clone $i; done < <(curl -s https://api.github.com/orgs/datasets/repos?per_page=100 | jq -r '.[].clone_url')"] 
-CMD ["python3.9"]
+CMD ["/usr/bin/python3.9"]
 #COPY . /opt/airflow
 COPY . /ihm
 RUN pip install -r requirements.txt
