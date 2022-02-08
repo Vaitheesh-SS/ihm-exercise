@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command:
-      - python3.9 main.py
+    #command:
+    #  - python3.9 main.py
     ports:
       - 8001:5000 
     volumes:

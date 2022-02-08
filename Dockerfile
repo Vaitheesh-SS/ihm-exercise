@@ -19,10 +19,10 @@ FROM python:latest
 #WORKDIR /opt/airflow
 WORKDIR /ihm
 
-RUN ["/bin/bash", "-c", "mkdir data && cd data && while read i; do git clone $i; done < <(curl -s https://api.github.com/orgs/datasets/repos?per_page=100 | jq -r '.[].clone_url')"] 
-CMD ["/usr/bin/python3.9"]
+RUN ["/bin/bash", "-c", "mkdir data && cd data && while read i; do git clone $i; done < <(curl -s https://api.github.com/orgs/datasets/repos?per_page=100 | jq -r '.[].clone_url')"]
 #COPY . /opt/airflow
 COPY . /ihm
 RUN pip install -r requirements.txt
+CMD ["python3.9", "main.py"]
 
 ENTRYPOINT ["python3.9"]
