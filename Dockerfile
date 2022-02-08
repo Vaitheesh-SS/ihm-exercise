@@ -23,6 +23,6 @@ RUN ["/bin/bash", "-c", "mkdir data && cd data && while read i; do git clone $i;
 #COPY . /opt/airflow
 COPY . /ihm
 RUN pip install -r requirements.txt
-CMD ["python3.9", "main.py"]
+CMD ["/usr/bin/python3.9", "main.py"]
 
-ENTRYPOINT ["bash"]
+#ENTRYPOINT ["bash"]
