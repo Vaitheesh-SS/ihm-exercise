@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	jq
 
-From python:latest
+FROM python:latest
 
 # RUN apt-get update && \
 #     apt-get install -y curl \
