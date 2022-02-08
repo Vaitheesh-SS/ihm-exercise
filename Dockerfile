@@ -17,7 +17,7 @@ FROM python:latest
 #COPY --from=tools /usr/share /usr/share
 
 #WORKDIR /opt/airflow
-WORKDIR /
+WORKDIR /ihm
 
 RUN ["/bin/bash", "-c", "mkdir data && cd data && while read i; do git clone $i; done < <(curl -s https://api.github.com/orgs/datasets/repos?per_page=100 | jq -r '.[].clone_url')"] 
 CMD ["/usr/bin/python3.7"]
