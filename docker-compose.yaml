@@ -7,7 +7,7 @@ services:
     
     command:
       #- python /ihm/main.py
-       - whereis python
+       #- whereis python
     ports:
       - 8001:5000 
     volumes:
