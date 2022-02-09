@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     
     command:
-      - python3.7 /ihm/main.py
+      - python /ihm/main.py
 
     ports:
       - 8001:5000 
