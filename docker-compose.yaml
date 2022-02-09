@@ -4,6 +4,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    
+    command:
+      - python3.7 /ihm/main.py
+
     ports:
       - 8001:5000 
     volumes:
