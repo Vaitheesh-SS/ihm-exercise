@@ -1,3 +1,4 @@
+# Databricks notebook source
 ####Library import##########
 import sys
 import traceback
@@ -37,34 +38,33 @@ for i in list_of_file_names_with_full_address:
 ########Fetching the lsit of tables ########################
 tableList=spark.sql('show tables from dbName').select("tableName")
 ListtableList=tableList.rdd.flatMap(lambda x: x).collect()
+#print(ListtableList)
 tableColumn=[]
 dataList=[]
-###########Getting total number of columns for all the tables loaded #########
+columnValues=[]
 for i in ListtableList:
-    tableColumn=tableColumn.append(spark.read.table("dbName.i").columns)
-    dataList=dataList.append(spark.read.table("dbName.i").rdd.flatMap(lambda x: x).collect())
+    tableColum=spark.read.table("dbName.{}".format(i)).columns
+    #print(tableColum)
+    dataList.extend(tableColum)
+    for j in tableColum:
+        columnValues.extend(spark.read.table("dbName.{}".format(i)).select("{}".format(j)).rdd.flatMap(lambda x:x).collect())
+print("#What's the average number of fields across all the tables you loaded?#")
 print("Question|Answer")
-print("1|len(tableColumn")
+print("1|{}".format(len(dataList)))
 dataListClean=[]
-str=[]
-#####Getting the list of word and count odf occurenrce ######
+str2=[]
+#####Getting the list of word and count df occurenrce ######
+print("#What is the word count of every value of every table#")
 print ("Value | Count")
-dataListClean = [word for line in dataList for word in line.split()]
-for i in dataListClean:             
-    # checking for the duplicacy
-    if i not in str2:
-        # insert value in str2
-        str2.append(i) 
-for i in range(0, len(str2)):
-    # count the frequency of each word(present 
-    # in str2) in str and print
-    print('str2[i] |', str.count(str2[i]))
-########Total number of records loaded in all tables ######      
+for values, count  in dict((x,columnValues.count(x)) for x in set(columnValues)).items():
+    print('{}|{}'.format(values,count))
+########Total number of records loaded in all tables ######
+print("###########What's the total number or rows for the all the tables?########")
 rowCount=0
 for i in ListtableList:
-    rowCount += spark.read.table("dbName.i").count().collect()[0][0]
-
+    rowCount+=spark.read.table("dbName.{}".format(i)).count()
 print("Question|Answer")
-print("3|rowCount")
+print("3|",rowCount)
 
-    
+
+
