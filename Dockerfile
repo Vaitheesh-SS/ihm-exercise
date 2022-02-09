@@ -22,4 +22,4 @@ COPY main.py /ihm
 
 RUN pip install -r requirements.txt
 #CMD ["/usr/bin/python3.7", "main.py"]
-ENTRYPOINT ["bash"]
+#ENTRYPOINT ["bash"]
