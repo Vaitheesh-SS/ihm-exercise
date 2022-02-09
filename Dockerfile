@@ -20,5 +20,5 @@ COPY requirements.txt /ihm
 COPY main.py /ihm
 
 RUN pip install -r requirements.txt
-CMD ["python3.7", "main.py"]
+CMD ["python", "main.py"]
 #ENTRYPOINT ["bash"]
