@@ -20,7 +20,7 @@ WORKDIR /ihm
 COPY requirements.txt /ihm
 COPY main.py /ihm
 
-CMD ["python", "-m pip install --upgrade pip"]
+RUN python -m pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
