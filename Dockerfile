@@ -21,7 +21,6 @@ COPY requirements.txt /ihm
 COPY main.py /ihm
 
 RUN python -m pip install --upgrade pip
-
 RUN pip install -r requirements.txt
 
 CMD ["python", "main.py"]
