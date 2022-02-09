@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     
-    command:
+    #command:
       #- python /ihm/main.py
        #- whereis python
     ports:
