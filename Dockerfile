@@ -21,4 +21,4 @@ COPY main.py /ihm
 
 RUN pip install -r requirements.txt
 CMD ["python", "main.py"]
-#ENTRYPOINT ["bash"]
+ENTRYPOINT ["/bin/sh", "-c"]
