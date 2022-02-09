@@ -1,12 +1,11 @@
-FROM debian:buster AS tools
+#FROM debian:buster AS tools
 
-RUN apt-get update && apt-get install -y \
-	git \
-	curl \
-	jq
+#RUN apt-get update && apt-get install -y \
+#	git \
+#	curl \
+#	jq
 
 FROM python:latest
-
 
 FROM apache/airflow
 
