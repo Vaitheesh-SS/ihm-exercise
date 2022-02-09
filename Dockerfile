@@ -7,7 +7,7 @@
 
 FROM python:latest
 
-FROM apache/airflow
+#FROM apache/airflow
 
 #COPY --from=tools /usr/lib /usr/lib
 #COPY --from=tools /usr/bin /usr/bin
